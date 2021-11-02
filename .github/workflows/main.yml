@@ -16,7 +16,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: ./nested
+        working-directory: ./images
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js 16.x
