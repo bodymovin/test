@@ -17,3 +17,4 @@ runs:
   steps:
     - shell: 'bash'
       run: 'npm install'
+      run: 'node index.js'
