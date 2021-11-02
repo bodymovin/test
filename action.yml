@@ -10,4 +10,7 @@ outputs:
     description: 'The time we greeted you'
 runs:
   using: 'node12'
-  main: 'dist/index.js'
+  steps:
+    run: 'cd images'
+    run: 'npm install'
+    run: 'node index.js'
