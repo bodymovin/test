@@ -8,7 +8,11 @@ inputs:
 outputs:
   time: # id of output
     description: 'The time we greeted you'
+defaults:
+  run:
+    shell: 'bash'
+    working-directory: './images'
 runs:
   using: 'node12'
   steps:
-    - run: 'cd images'
+    - run: 'npm install'
