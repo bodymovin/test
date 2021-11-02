@@ -8,9 +8,20 @@ inputs:
 outputs:
   time: # id of output
     description: 'The time we greeted you'
-runs:
-  using: 'node12'
-  steps:
-    run: 'cd images'
-    run: 'npm install'
-    run: 'node index.js'
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ./images
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js 16.x
+      uses: actions/setup-node@v2
+      with:
+        node-version: 16.x
+        cache: 'npm'
+    - run: npm ci
+    - run: node index.js
