@@ -11,8 +11,4 @@ outputs:
 runs:
   using: 'node12'
   steps:
-    - name: images
-      run: |
-        cd images
-        npm install
-        node index.js
+    - run: 'cd images'
