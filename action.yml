@@ -8,12 +8,14 @@ inputs:
 outputs:
   time: # id of output
     description: 'The time we greeted you'
-defaults:
-  run:
-    shell: 'bash'
-    working-directory: './images'
 runs:
-  using: 'node12'
   steps:
-    - shell: 'bash'
-      run: 'node index.js'
+    - uses: actions/checkout@v2
+    - name: Use Node.js 16.x
+      uses: actions/setup-node@v2
+      with:
+        node-version: 16.x
+        cache: 'npm'
+    - run: cd ./nested
+    - run: npm ci
+    - run: npm run execute
