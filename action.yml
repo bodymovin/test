@@ -15,5 +15,5 @@ defaults:
 runs:
   using: 'node12'
   steps:
-    shell: 'bash'
-    - run: 'npm install'
+    - shell: 'bash'
+      run: 'npm install'
