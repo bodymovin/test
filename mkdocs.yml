@@ -1,0 +1,5 @@
+site_name: Test Docs
+nav:
+  - Home: index.md
+  - Specs: specs.md
+  - Render Model: render-model.md
