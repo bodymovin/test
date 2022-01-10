@@ -27,8 +27,8 @@ jobs:
       with:
         path: ~/.npm
         key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
-    - run: npm ci
-   - run: npm run execute
+    # - run: npm ci
+    - run: npm run execute
     - uses: actions/checkout@master
     - uses: actions/setup-go@v2
       with:
