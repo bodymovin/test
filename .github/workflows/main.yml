@@ -23,8 +23,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js 16.x
-      uses: actions/cache@v2
-    # - run: npm ci
+    - uses: actions/setup-node@v2
+    #- run: npm ci
     - run: npm run execute
     - uses: actions/checkout@master
     - uses: actions/setup-go@v2
