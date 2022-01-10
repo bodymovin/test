@@ -14,17 +14,15 @@ jobs:
   create_snapshots:
   
     runs-on: ubuntu-latest
-    env:
-      GOOGLE_CLOUD_STORAGE: ${{ secrets.GOOGLE_CLOUD_STORAGE }}
-      GOPATH: ${{ github.workspace }}
     defaults:
       run:
         working-directory: ./images
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/cache@v2
+    - name: Use Multiple uses
+      uses: actions/cache@v2
     - uses: actions/setup-node@v2
-    - run: echo hello > path/to/artifact/world.txt
+    - run: echo hello > ./world.txt
     - run: node -v
     - uses: actions/setup-go@v2
       with:
