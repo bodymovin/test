@@ -22,11 +22,11 @@ jobs:
         working-directory: ./images
     steps:
     - uses: actions/checkout@v2
-    - name: Use Multiple uses
-      uses: actions/cache@v2
-      uses: actions/setup-go@v2
+    - uses: actions/cache@v2
+    - uses: actions/setup-node@v2
+    - run: echo hello > path/to/artifact/world.txt
+    - run: node -v
+    - uses: actions/setup-go@v2
       with:
         go-version: '^1.16.4' # The Go version to download (if necessary) and use.
-      uses: actions/setup-node@v2
     - run: go version
-    - run: node -v
