@@ -14,17 +14,19 @@ jobs:
   create_snapshots:
   
     runs-on: ubuntu-latest
+    env:
+      GOOGLE_CLOUD_STORAGE: ${{ secrets.GOOGLE_CLOUD_STORAGE }}
+      GOPATH: ${{ github.workspace }}
     defaults:
       run:
         working-directory: ./images
     steps:
     - uses: actions/checkout@v2
-    - name: Use Multiple uses
-      uses: actions/cache@v2
-    - uses: actions/setup-node@v2
-    - run: echo hello > ./world.txt
-    - run: node -v
+    - name: Use Node.js 16.x
+    - uses: actions/cache@v2
     - uses: actions/setup-go@v2
       with:
         go-version: '^1.16.4' # The Go version to download (if necessary) and use.
-    - run: go version
+    - uses: actions/setup-node@v2
+    # - run: go version
+    # - run: node -v
