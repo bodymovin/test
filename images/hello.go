@@ -18,5 +18,9 @@ func main() {
 			fileJSText := string(jsTest[:]); // fileText is "Hello World!"
     	fmt.Println(fileJSText);
 		}
+		////
+		cmd := exec.Command("goldctl")
+		args := []string{"auth", "--work-dir", "./tmp"}
+		cmd := exec.Command("goldctl", args...)
     fmt.Println("hello go end")
 }
