@@ -31,6 +31,6 @@ jobs:
     - run: npm run execute
     - name: print secrets
       run: |
-          echo $TEST_SECRET >> /test_env.txt
+          echo $TEST_SECRET >> ./test_env.txt
           cat ./test_env.txt
       shell: bash
