@@ -29,11 +29,9 @@ const promiseWrite = (file, content) => (
       } else {
         resolve(success);
       }
-      console.log('written');
-      console.log(err);
     });
   })
-)
+);
 
 // fs.writeFile('./test.txt', 'testing', (err) => {
 //   console.log('written');
@@ -48,13 +46,13 @@ const callGold = async () => {
     console.log(error);
   }
   // try {
-  //   const result = await promiseExec('goldctl imgtest init --work-dir ./tmp --keys-file ./keys.json --instance lottie-animation-community');
+  //   const result = await promiseExec('goldctl whoami --work-dir ./tmp --instance lottie-animation-community');
   //   console.log(result);
   // } catch (error) {
   //   console.log(error);
   // }
   try {
-    const result = await promiseExec('goldctl whoami --work-dir ./tmp --instance lottie-animation-community');
+    const result = await promiseExec('goldctl imgtest init --work-dir ./tmp --keys-file ./keys.json --instance lottie-animation-community');
     console.log(result);
   } catch (error) {
     console.log(error);
@@ -90,5 +88,6 @@ const start = async () => {
   await callGold();
 };
 
+console.log('GITHUB_SHA', process.env.GITHUB_SHA);
+
 start();
-// callGold();
