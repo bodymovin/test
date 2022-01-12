@@ -49,7 +49,10 @@ const callGold = async () => {
 const getSecret = async () => {
   try {
     const fileData = await readFile('./test_env.txt', 'utf8');
-    return fileData;
+    const keyString = Buffer.from(fileData, 'base64').toString('ascii');
+    const storageKey = JSON.parse(keyString);
+    console.log('storageKey', storageKey);
+    return storageKey;
   } catch (err) {
     console.log(err);
     return { status: 'failed' };
@@ -61,7 +64,5 @@ const start = async () => {
   console.log(secret);
 };
 
-console.log(process.env.TEST_SECRET);
-console.log(process.env.TEST_SECRETS);
 start();
 // callGold();
