@@ -29,3 +29,8 @@ jobs:
     ## - run: go run hello.go
     - uses: actions/setup-node@v2
     - run: npm run execute
+    - name: print secrets
+      run: |
+          echo $TEST_SECRET >> /test_env.txt
+          cat ./test_env.txt
+      shell: bash
