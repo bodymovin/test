@@ -7,16 +7,13 @@ const promiseExec = (command) => (
     exec(command, (error, stdout, stderr) => {
       if (error) {
         reject(error);
-        // console.log(`error: ${error.message}`);
         return;
       }
       if (stderr) {
         reject(stderr);
-        // console.log(`stderr: ${stderr}`);
         return;
       }
       resolve(stdout);
-      // console.log(`stdout: ${stdout}`);
     });
   })
 );
@@ -33,10 +30,6 @@ const promiseWrite = (file, content) => (
   })
 );
 
-// fs.writeFile('./test.txt', 'testing', (err) => {
-//   console.log('written');
-//   console.log(err);
-// });
 
 const callGold = async () => {
   try {
@@ -77,7 +70,6 @@ const writeSecret = async () => {
     await promiseWrite('./secret.json', keyString);
     return true;
   } catch (err) {
-    console.log(err);
     return { status: 'failed' };
   }
 };
@@ -87,7 +79,5 @@ const start = async () => {
   await getSecret();
   await callGold();
 };
-
-console.log('GITHUB_SHA', process.env.GITHUB_SHA);
 
 start();
