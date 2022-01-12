@@ -45,7 +45,9 @@ const callGold = async () => {
   //   console.log(error);
   // }
   try {
-    const result = await promiseExec('goldctl imgtest init --work-dir ./tmp --keys-file ./keys.json --instance lottie-animation-community');
+    const githubCommit = process.env.GITHUB_SHA || 'abcd';
+    console.log('githubCommit', githubCommit);
+    const result = await promiseExec(`goldctl imgtest init --work-dir ./tmp --commit_id ${githubCommit} --keys-file ./keys.json --instance lottie-animation-community`);
     console.log(result);
   } catch (error) {
     console.log(error);
@@ -78,6 +80,5 @@ const start = async () => {
   await writeSecret();
   await getSecret();
   await callGold();
-};
 
 start();
