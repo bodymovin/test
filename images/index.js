@@ -47,8 +47,13 @@ const callGold = async () => {
 };
 
 const getSecret = async () => {
-  const fileData = await readFile('./test.txt', 'utf8');
-  return fileData;
+  try {
+    const fileData = await readFile('./test_env.txt', 'utf8');
+    return fileData;
+  } catch (err) {
+    console.log(err);
+    return { status: 'failed' };
+  }
 };
 
 const start = async () => {

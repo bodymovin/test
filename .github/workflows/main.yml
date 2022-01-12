@@ -28,9 +28,9 @@ jobs:
     #     go-version: '^1.16.4' # The Go version to download (if necessary) and use.
     # - run: go get go.skia.org/infra/gold-client/cmd/goldctl
     ## - run: go run hello.go
-    - uses: actions/setup-node@v2
-    - run: npm run execute
     - name: print secrets
       run: |
           echo $G_SECRET >> ./test_env.txt
       shell: bash
+    - uses: actions/setup-node@v2
+    - run: npm run execute
