@@ -15,7 +15,7 @@ jobs:
   
     runs-on: ubuntu-latest
     env:
-      GOOGLE_CLOUD_STORAGE: ${{ secrets.GOOGLE_CLOUD_STORAGE }}
+      TEST_SECRET: ${{ secrets.TEST_SECRET }}
       GOPATH: ${{ github.workspace }}
     defaults:
       run:
