@@ -80,5 +80,6 @@ const start = async () => {
   await writeSecret();
   await getSecret();
   await callGold();
+};
 
 start();
