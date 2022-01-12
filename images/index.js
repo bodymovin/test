@@ -65,7 +65,6 @@ const getSecret = async () => {
   try {
     const fileData = await readFile('./secret.json', 'utf8');
     const storageKey = JSON.parse(fileData);
-    console.log('storageKey22', storageKey.project_id);
     return storageKey;
   } catch (err) {
     console.log(err);
