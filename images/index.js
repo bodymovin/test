@@ -1,4 +1,4 @@
-// const fs = require('fs');
+const { promises: { readFile } } = require('fs');
 const { exec } = require('child_process');
 
 const promiseExec = (command) => (
@@ -46,6 +46,17 @@ const callGold = async () => {
   }
 };
 
+const getSecret = async () => {
+  const fileData = await readFile('./test.txt', 'utf8');
+  return fileData;
+};
+
+const start = async () => {
+  const secret = await getSecret();
+  console.log(secret);
+};
+
 console.log(process.env.TEST_SECRET);
 console.log(process.env.TEST_SECRETS);
+start();
 // callGold();
