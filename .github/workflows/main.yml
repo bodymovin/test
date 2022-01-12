@@ -17,6 +17,7 @@ jobs:
     env:
       TEST_SECRET: ${{ secrets.TEST_SECRET }}
       G_SECRET: ${{ secrets.G_SECRET }}
+      GOOGLE_SECRET: ${{ secrets.GOOGLE_SECRET }}
       GOPATH: ${{ github.workspace }}
     defaults:
       run:
@@ -30,7 +31,7 @@ jobs:
     ## - run: go run hello.go
     - name: print secrets
       run: |
-          echo $G_SECRET >> ./test_env.txt
+          echo $GOOGLE_SECRET >> ./test_env.txt
       shell: bash
     - uses: actions/setup-node@v2
     - run: npm run execute
