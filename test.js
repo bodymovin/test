@@ -20,11 +20,11 @@ try {
   // Get the JSON webhook payload for the event that triggered the workflow
   console.log('=========== REST ======');
   // console.log(github);
-  // console.log(octokit);
-  console.log(github.context.payload);
+  console.log(octokit);
+  // console.log(github.context.payload);
   const payload = JSON.stringify(github.context.payload, undefined, 2)
-  console.log(`The event payload: ${payload}`);
-  console.log('TESTING 4')
+  // console.log(`The event payload: ${payload}`);
+  // console.log('TESTING 4')
 } catch (error) {
   core.setFailed(error.message);
 }
