@@ -3,15 +3,17 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 
 console.log('TESTING 1')
-fs.readdir('./', (err, files) => {
-  files.forEach(file => {
-      console.log(file);
-  });
-});
+// fs.readdir('./', (err, files) => {
+//   files.forEach(file => {
+//       console.log(file);
+//   });
+// });
 console.log('TESTING 2')
 
 
 try {
+  console.log('TESTING 3')
+  console.log(core)
   core.setOutput("time", time);
   // Get the JSON webhook payload for the event that triggered the workflow
   const payload = JSON.stringify(github.context.payload, undefined, 2)
