@@ -2,12 +2,13 @@ const fs = require('fs');
 const core = require('@actions/core');
 const github = require('@actions/github');
 
+console.log('TESTING 1')
 fs.readdir('./', (err, files) => {
   files.forEach(file => {
       console.log(file);
   });
 });
-console.log('TESTING')
+console.log('TESTING 2')
 
 
 try {
