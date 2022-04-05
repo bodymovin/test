@@ -16,10 +16,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       TEST_SECRET: ${{ secrets.TEST_SECRET }}
-    defaults:
-      run:
-        working-directory: ./images
     steps:
     - uses: actions/setup-node@v2
-    
     - run: npm run execute
