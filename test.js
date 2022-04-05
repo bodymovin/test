@@ -16,7 +16,7 @@ try {
   console.log(core)
   // Get the JSON webhook payload for the event that triggered the workflow
   console.log('=========== REST ======');
-  console.log(github.rest);
+  console.log(github);
   const payload = JSON.stringify(github.context.payload, undefined, 2)
   console.log(`The event payload: ${payload}`);
   console.log('TESTING 4')
