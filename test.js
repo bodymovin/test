@@ -14,12 +14,12 @@ console.log('TESTING 2')
 try {
   console.log('TESTING 3')
   console.log(core)
-  core.setOutput("time", time);
   // Get the JSON webhook payload for the event that triggered the workflow
-  const payload = JSON.stringify(github.context.payload, undefined, 2)
-  console.log(`The event payload: ${payload}`);
   console.log('=========== REST ======');
   console.log(github.rest);
+  const payload = JSON.stringify(github.context.payload, undefined, 2)
+  console.log(`The event payload: ${payload}`);
+  console.log('TESTING 4')
 } catch (error) {
   core.setFailed(error.message);
 }
