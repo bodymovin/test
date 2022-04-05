@@ -14,15 +14,14 @@ console.log('TESTING 2')
 try {
   console.log('TESTING 3')
   console.log(core)
-  const GITHUB_TOKEN = core.getInput('GITHUB_TOKEN');
-  console.log('GITHUB_TOKEN', GITHUB_TOKEN);
-  console.log('PROCESS ENV', process.env.GITHUB_TOKEN);
+  const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
   const octokit = github.getOctokit(GITHUB_TOKEN);
   // Get the JSON webhook payload for the event that triggered the workflow
   console.log('=========== REST ======');
-  console.log(github);
-  const payload = JSON.stringify(github.context.payload, undefined, 2)
-  console.log(`The event payload: ${payload}`);
+  // console.log(github);
+  console.log(octokit);
+  // const payload = JSON.stringify(github.context.payload, undefined, 2)
+  // console.log(`The event payload: ${payload}`);
   console.log('TESTING 4')
 } catch (error) {
   core.setFailed(error.message);
