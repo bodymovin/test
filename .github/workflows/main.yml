@@ -4,30 +4,20 @@
 name: Node.js CI
 
 on:
-  push:
-    branches: [ main, schema_validator, gold_integration ]
   pull_request:
-    branches: [ main, schema_validator, gold_integration ]
+    branches: [ player_version ]
 
 jobs:
 
-  create_snapshots:
+  create_pull_request:
   
     runs-on: ubuntu-latest
     env:
       TEST_SECRET: ${{ secrets.TEST_SECRET }}
-      G_SECRET: ${{ secrets.G_SECRET }}
-      GOOGLE_SECRET: ${{ secrets.GOOGLE_SECRET }}
-      GOPATH: ${{ github.workspace }}
     defaults:
       run:
         working-directory: ./images
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-go@v2
-      with:
-        go-version: '^1.16.4' # The Go version to download (if necessary) and use.
-    - run: go get go.skia.org/infra/gold-client/cmd/goldctl
-    ## - run: go run hello.go
     - uses: actions/setup-node@v2
+    
     - run: npm run execute
