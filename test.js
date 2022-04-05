@@ -2,7 +2,7 @@ const fs = require('fs');
 const core = require('@actions/core');
 const github = require('@actions/github');
 
-console.log('TESTING PR')
+console.log('TESTING PR2')
 console.log('TESTING 1')
 // fs.readdir('./', (err, files) => {
 //   files.forEach(file => {
@@ -20,7 +20,7 @@ try {
   // Get the JSON webhook payload for the event that triggered the workflow
   console.log('=========== REST ======');
   // console.log(github);
-  console.log(octokit);
+  // console.log(octokit);
   console.log(github.context.payload);
   const payload = JSON.stringify(github.context.payload, undefined, 2)
   console.log(`The event payload: ${payload}`);
