@@ -12,14 +12,18 @@ console.log('TESTING 2')
 
 
 try {
-  console.log('TESTING 3')
+  console.log('TESTING 5')
   console.log(core)
   const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
   const octokit = github.getOctokit(GITHUB_TOKEN);
+  console.log(github.event)
+  console.log(github.event.issue)
+  console.log(github.event.issue.title)
+  console.log(github.event.issue.body)
   // Get the JSON webhook payload for the event that triggered the workflow
   console.log('=========== REST ======');
   // console.log(github);
-  console.log(octokit);
+  // console.log(octokit);
   // const payload = JSON.stringify(github.context.payload, undefined, 2)
   // console.log(`The event payload: ${payload}`);
   console.log('TESTING 4')
