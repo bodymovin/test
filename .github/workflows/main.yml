@@ -34,9 +34,10 @@ jobs:
         run: npm install
       - run: npm run execute
         id: execute
-      - uses: EndBug/add-and-commit@v9
-        with:
-          new_branch: ${{steps.execute.outputs.branch_name}}
+      # - uses: EndBug/add-and-commit@v9
+      #   with:
+      #     new_branch: ${{steps.execute.outputs.branch_name}}
+      - run: echo ${{steps.execute.outputs.branch_name}}
 
   commit:
     runs-on: ubuntu-latest
