@@ -46,23 +46,15 @@ const getPlayerData = async(issueBody) => {
   return keys;
 }
 
-const setBranchName = async(playerData) => {
+const setOutputs = async(playerData) => {
   const branchName = `${playerData.player}__${playerData.version}`
   core.setOutput("branch_name", branchName);
-  core.setOutput("branch_name_pr", `${branchName}_pr`);
+  core.setOutput("version", playerData.version);
+  core.setOutput("player", playerData.player);
 }
 
 async function run() {
   try {
-    if (!github.context.payload.issue) {
-      github.context.payload.issue = {
-        title: 'New version',
-        body: `player: lottie-web
-version:5.9.2`
-      }
-    }
-    // Issue title: github.context.payload.event.issue.title
-    // Issue body: github.context.payload.event.issue.body
     const issue = github.context.payload.issue;
     if (issue.title.toLowerCase() !== 'new version') {
       // return;
@@ -71,7 +63,7 @@ version:5.9.2`
     if (!playerData.player || !playerData.version) {
       throw new Error('player or version are missing');
     }
-    await setBranchName(playerData);
+    await setOutputs(playerData);
     await updateFiles(playerData.player, playerData.version);
     console.log('RUN ENDED');
   } catch (error) {
