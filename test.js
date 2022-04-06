@@ -10,6 +10,7 @@ async function readFiles() {
     const data = await readdir(
       path.join(process.env.GITHUB_WORKSPACE, 'data')
     )
+    console.log(data)
   } catch(error) {
     console.log('readFiles error');
     console.log(error);
