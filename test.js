@@ -33,7 +33,7 @@ async function updateFiles(player, version) {
 }
 
 async function run() {
-  await updateFiles('lottie-web', '5.9.11')
+  await updateFiles('lottie-web', '5.9.12')
   console.log('RUN ENDED')
   try {
     console.log('TESTING 5')

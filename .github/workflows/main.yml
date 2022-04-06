@@ -11,10 +11,6 @@ on:
   issues:
     types: [opened, edited]
 
-outputs:
-  branch_name: # id of output
-    description: 'The branch name'
-
 jobs:
 
   build:
@@ -32,9 +28,9 @@ jobs:
         with:
           node-version: '14.x'
       - name: Install dependencies
-        id: 'nodestep'
+        id: node_step
         run: npm install
       - run: npm run execute
       - uses: EndBug/add-and-commit@v9
         with:
-          new_branch: ${{outputs.branch_name}}
+          new_branch: ${{steps.node_step.outputs.branch_name}}
