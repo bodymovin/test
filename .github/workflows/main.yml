@@ -11,6 +11,10 @@ on:
   issues:
     types: [opened, edited]
 
+outputs:
+  branch_name: # id of output
+    description: 'The branch name'
+
 jobs:
 
   build:
@@ -33,4 +37,4 @@ jobs:
       - run: npm run execute
       - uses: EndBug/add-and-commit@v9
         with:
-          new_branch: ${{steps.nodestep.outputs.branch_name}}
+          new_branch: ${{outputs.branch_name}}
