@@ -48,6 +48,14 @@ const getBranchName = async(playerData) => {
 
 async function run() {
   try {
+    console.log(github)
+    console.log('github')
+    console.log('github.event')
+    console.log(github.event)
+    console.log('github.event.issue')
+    console.log(github.event.issue)
+    // Issue title: github.event.issue.title
+    // Issue body: github.event.issue.body
     if (github.event.issue.title.toLowerCase() !== 'new version') {
       // return;
     }
