@@ -35,11 +35,15 @@ async function updateFiles(player, version) {
 }
 
 const getPlayerData = async(issueBody) => {
-  console.log(issueBody)
-  return {
-    version: '5.9.13',
-    player: 'lottie-web',
-  }
+  var split = issueBody.split('\n');
+  console.log(split);
+  const keys = split.reduce((dict, value) => {
+    const keyValue = value.split(':')
+    dict[keyValue[0].trim()] = keyValue[1].trim();
+    return dict;
+  }, {})
+
+  return keys;
 }
 
 const getBranchName = async(playerData) => {
@@ -48,6 +52,13 @@ const getBranchName = async(playerData) => {
 
 async function run() {
   try {
+    if (!github.context.payload.issue) {
+      github.context.payload.issue = {
+        title: 'New version',
+        body: `player: lottie-web
+version:5.9.2`
+      }
+    }
     // Issue title: github.context.payload.event.issue.title
     // Issue body: github.context.payload.event.issue.body
     const issue = github.context.payload.issue;
@@ -55,10 +66,11 @@ async function run() {
       // return;
     }
     const playerData = await getPlayerData(issue.body);
-    const branchName = getBranchName(playerData);
+    if (!playerData.player || !playerData.version) {
+      throw new Error('player or version are missing');
+    }
+    const branchName = await getBranchName(playerData);
     core.setOutput("branch_name", branchName);
-
-    await updateFiles(playerData.player, playerData.version);
     console.log('RUN ENDED');
   } catch (error) {
     core.setFailed(error.message);
