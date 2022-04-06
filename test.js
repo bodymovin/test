@@ -43,6 +43,7 @@ async function run() {
     const octokit = github.getOctokit(GITHUB_TOKEN);
     // Issue title: github.event.issue.title
     // Issue body: github.event.issue.body
+    console.log('TESTING 6')
   
   
   } catch (error) {

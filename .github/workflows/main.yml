@@ -28,9 +28,9 @@ jobs:
         with:
           node-version: '14.x'
       - name: Install dependencies
-        id: 'node_step'
+        id: 'nodestep'
         run: npm install
       - run: npm run execute
       - uses: EndBug/add-and-commit@v9
         with:
-          new_branch: ${{steps.node_step.outputs.branch_name}}
+          new_branch: ${{steps.nodestep.outputs.branch_name}}
