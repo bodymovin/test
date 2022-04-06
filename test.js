@@ -51,7 +51,7 @@ async function run() {
     if (github.event.issue.title.toLowerCase() !== 'new version') {
       // return;
     }
-    const playerData = await getPlayerData(ithub.event.issue.body);
+    const playerData = await getPlayerData(github.event.issue.body);
     const branchName = getBranchName(playerData);
     core.setOutput("branch_name", branchName);
 
