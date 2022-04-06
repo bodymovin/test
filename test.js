@@ -33,19 +33,17 @@ async function updateFiles(player, version) {
 }
 
 async function run() {
-  await updateFiles('lottie-web', '5.9.12')
+  await updateFiles('lottie-web', '5.9.13')
   console.log('RUN ENDED')
   try {
     console.log('TESTING 5')
     // console.log(core)
-    core.setOutput("output1", "branch_from_output");
-    core.setOutput("output2", "branch_from_output_job");
     core.setOutput("branch_name", "branch_name_job2");
     const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
     const octokit = github.getOctokit(GITHUB_TOKEN);
     // Issue title: github.event.issue.title
     // Issue body: github.event.issue.body
-    console.log('TESTING 6')
+    console.log('TESTING 7')
   
   
   } catch (error) {

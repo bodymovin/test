@@ -17,10 +17,7 @@ jobs:
 
     runs-on: ubuntu-latest
     outputs:
-      output1: ${{ steps.step1.outputs.test }}
-      output2: ${{ steps.step2.outputs.test }}
-      output3: ${{ steps.execute.outputs.branch_name }}
-      branch_name_job3:
+      branch_name: ${{ steps.execute.outputs.branch_name }}
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
@@ -37,17 +34,13 @@ jobs:
         run: npm install
       - run: npm run execute
         id: execute
-      - id: step1
-        run: echo "::set-output name=test::hello"
-      - id: step2
-        run: echo "::set-output name=test::world"
 
   commit:
     runs-on: ubuntu-latest
     needs: build
     steps:
       - run: echo 'test echo'
-      - run: echo ${{needs.build.outputs.output1}} ${{needs.build.outputs.output2}} ${{needs.build.outputs.output3}}
-    # - uses: EndBug/add-and-commit@v9
-    #   with:
-    #     new_branch: ${{needs.build.outputs.branch_name_job}}
+      - run: echo ${{needs.build.outputs.branch_name}}
+    - uses: EndBug/add-and-commit@v9
+      with:
+        new_branch: ${{needs.build.outputs.branch_name}}
