@@ -33,6 +33,9 @@ jobs:
       # - uses: EndBug/add-and-commit@v9
       #   with:
       #     new_branch: ${{steps.execute.outputs.branch_name}}
+      - name: cancelling
+        if: ${{steps.execute.outputs.cancelled == 'true'}}
+        uses: andymckay/cancel-action@0.2
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
         with:

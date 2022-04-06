@@ -64,7 +64,7 @@ async function run() {
   try {
     const issue = github.context.payload.issue;
     if (issue.title.toLowerCase() !== 'new version') {
-      return;
+      throw new Error('not a versioning issue');
     }
     const playerData = await getPlayerData(issue.body);
     if (!playerData.player || !playerData.version) {
@@ -73,6 +73,7 @@ async function run() {
     await setOutputs(playerData);
     await updateFiles(playerData.player, playerData.version);
   } catch (error) {
+    core.setOutput("cancelled", "true");
     core.setFailed(error.message);
   }
 }
