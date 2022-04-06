@@ -30,3 +30,6 @@ jobs:
       - name: Install dependencies
         run: npm install
       - run: npm run execute
+      - uses: EndBug/add-and-commit@v9
+        with:
+          new_branch: 'commit-branch'
