@@ -9,9 +9,9 @@ const editFile = async (filePath, player, version) => {
   if (!fileData.stats[player]) {
     throw new Error('Player does not exist');
   }
-  const player = fileData.stats[player];
-  const objKeys = Object.keys(player)
-  fileData.stats[player][version] = player[objKeys[objKeys.length - 1]];
+  const playerStats = fileData.stats[player];
+  const objKeys = Object.keys(playerStats)
+  fileData.stats[player][version] = playerStats[objKeys[objKeys.length - 1]];
   const updateFileString = JSON.stringify(fileData, null, 2);
   return await writeFile(filePath, updateFileString);
 }
