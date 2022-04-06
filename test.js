@@ -35,7 +35,7 @@ async function updateFiles(player, version) {
 }
 
 const getPlayerData = async(issueBody) => {
-  var split = issueBody.split('\n');
+  var split = issueBody.split('\r\n');
   console.log(split);
   const keys = split.reduce((dict, value) => {
     const keyValue = value.split(':')
