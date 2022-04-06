@@ -18,9 +18,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    outputs:
-      branch_name:
-        description: 'The branch name'
     steps:
       # - uses: peterjgrainger/action-create-branch@v2.0.1
       #   with:
@@ -31,8 +28,12 @@ jobs:
         with:
           node-version: '14.x'
       - name: Install dependencies
+        id: 'node_step'
+        outputs:
+          branch_name:
+            description: "The branch name"
         run: npm install
       - run: npm run execute
       - uses: EndBug/add-and-commit@v9
         with:
-          new_branch: ${{outputs.branch_name}}
+          new_branch: ${{steps.node_step.outputs.branch_name}}
