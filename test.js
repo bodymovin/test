@@ -38,16 +38,12 @@ async function run() {
   try {
     console.log('TESTING 5')
     // console.log(core)
+    core.setOutput("branch_name", "branch_from_output");
     const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
     const octokit = github.getOctokit(GITHUB_TOKEN);
     // Issue title: github.event.issue.title
     // Issue body: github.event.issue.body
   
-    console.log('=========== REST ======');
-    // console.log(github);
-    // console.log(octokit);
-    // const payload = JSON.stringify(github.context.payload, undefined, 2)
-    // console.log(`The event payload: ${payload}`);
   
   } catch (error) {
     core.setFailed(error.message);
