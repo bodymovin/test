@@ -17,9 +17,9 @@ try {
   const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
   const octokit = github.getOctokit(GITHUB_TOKEN);
   console.log(github)
-  console.log(github.event.issue)
-  console.log(github.event.issue.title)
-  console.log(github.event.issue.body)
+  // console.log(github.event.issue)
+  // console.log(github.event.issue.title)
+  // console.log(github.event.issue.body)
   // Get the JSON webhook payload for the event that triggered the workflow
   console.log('=========== REST ======');
   // console.log(github);
