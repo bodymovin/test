@@ -13,10 +13,10 @@ console.log('TESTING 2')
 
 try {
   console.log('TESTING 5')
-  console.log(core)
+  // console.log(core)
   const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
   const octokit = github.getOctokit(GITHUB_TOKEN);
-  console.log(github.event)
+  console.log(github)
   console.log(github.event.issue)
   console.log(github.event.issue.title)
   console.log(github.event.issue.body)
