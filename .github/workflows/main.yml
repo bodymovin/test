@@ -37,4 +37,5 @@ jobs:
       - uses: EndBug/add-and-commit@v9
         with:
           new_branch: ${{steps.execute.outputs.branch_name}}
-      - run: echo ${{steps.execute.outputs.branch_name}}
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4
