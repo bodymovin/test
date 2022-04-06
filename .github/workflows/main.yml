@@ -19,6 +19,9 @@ jobs:
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
+      - uses: peterjgrainger/action-create-branch@v2.0.1
+      with:
+        branch: 'release-zzz'
       - uses: actions/checkout@v3
       - name: Use Node.js
         uses: actions/setup-node@v3
