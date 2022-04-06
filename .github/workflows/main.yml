@@ -28,7 +28,7 @@ jobs:
       - name: Install dependencies
         id: node_step
         run: npm install
-      - run: npm run execute
+      - run: npm run execute_ts
         id: execute
       # - uses: EndBug/add-and-commit@v9
       #   with:

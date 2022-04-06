@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "execute": "node test.js"
+    "execute": "node test.js",
+    "execute_ts": "node --require esbuild-register test.ts"
   },
   "keywords": [],
   "author": "",
@@ -13,5 +14,9 @@
   "dependencies": {
     "@actions/core": "^1.6.0",
     "@actions/github": "^5.0.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.14.32",
+    "esbuild-register": "^3.3.2"
   }
 }
