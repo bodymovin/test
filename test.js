@@ -48,18 +48,13 @@ const getBranchName = async(playerData) => {
 
 async function run() {
   try {
-    console.log(github)
-    console.log('github')
-    console.log('github.event')
-    console.log(github.event)
-    console.log('github.event.issue')
-    console.log(github.event.issue)
-    // Issue title: github.event.issue.title
-    // Issue body: github.event.issue.body
-    if (github.event.issue.title.toLowerCase() !== 'new version') {
+    // Issue title: github.context.payload.event.issue.title
+    // Issue body: github.context.payload.event.issue.body
+    const issue = github.context.payload.issue;
+    if (issue.title.toLowerCase() !== 'new version') {
       // return;
     }
-    const playerData = await getPlayerData(github.event.issue.body);
+    const playerData = await getPlayerData(issue.body);
     const branchName = getBranchName(playerData);
     core.setOutput("branch_name", branchName);
 
