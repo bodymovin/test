@@ -18,6 +18,11 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       branch_name_job: ${{ steps.node_step.outputs.branch_name }}
+      branch_name_job2:
+        description: "A SECOND TEST"
+      branch_name_job3:
+        description: "A THIRD TEST"
+        value: "third test"
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
@@ -33,7 +38,9 @@ jobs:
         id: node_step
         run: npm install
       - run: npm run execute
+      - run: echo 'test echo'
       - run: echo ${{needs.build.outputs.branch_name_job}}
+      - run: echo ${{needs.build.outputs.branch_name_job2}}
       # - uses: EndBug/add-and-commit@v9
       #   with:
       #     new_branch: ${{needs.build.outputs.branch_name_job}}
