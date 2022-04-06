@@ -20,7 +20,6 @@ jobs:
       branch_name_job: ${{ steps.node_step.outputs.branch_name }}
       branch_name_job2: # id of output
       branch_name_job3: # id of output
-        value: "third test"
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
@@ -39,6 +38,7 @@ jobs:
       - run: echo 'test echo'
       - run: echo ${{needs.build.outputs.branch_name_job}}
       - run: echo ${{needs.build.outputs.branch_name_job2}}
+      - run: echo ${{needs.build.outputs.branch_name_job3}}
       # - uses: EndBug/add-and-commit@v9
       #   with:
       #     new_branch: ${{needs.build.outputs.branch_name_job}}
