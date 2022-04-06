@@ -18,10 +18,8 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       branch_name_job: ${{ steps.node_step.outputs.branch_name }}
-      branch_name_job2:
-        description: "A SECOND TEST"
-      branch_name_job3:
-        description: "A THIRD TEST"
+      branch_name_job2: # id of output
+      branch_name_job3: # id of output
         value: "third test"
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
