@@ -74,7 +74,7 @@ async function run() {
     await updateFiles(playerData.player, playerData.version);
   } catch (error) {
     core.setOutput("cancelled", "true");
-    core.setFailed(error.message);
+    // core.setFailed(error.message);
   }
 }
 
