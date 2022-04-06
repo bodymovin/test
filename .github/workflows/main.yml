@@ -4,10 +4,6 @@
 name: Node.js CI
 
 on:
-  push:
-    branches: [ player_version ]
-  pull_request:
-    branches: [ player_version ]
   issues:
     types: [opened, edited]
 
@@ -40,4 +36,4 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
         with:
-          branch: main
+          branch: ${{steps.execute.outputs.branch_name_pr}}

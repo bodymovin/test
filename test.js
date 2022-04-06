@@ -49,6 +49,7 @@ const getPlayerData = async(issueBody) => {
 const setBranchName = async(playerData) => {
   const branchName = `${playerData.player}__${playerData.version}`
   core.setOutput("branch_name", branchName);
+  core.setOutput("branch_name_pr", `${branchName}_pr`);
 }
 
 async function run() {
