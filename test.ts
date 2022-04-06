@@ -66,6 +66,9 @@ async function run() {
     if (issue.title.toLowerCase() !== 'new version') {
       throw new Error('not a versioning issue');
     }
+    console.log('=============================')
+    console.log(issue)
+    console.log(JSON.stringify(issue))
     const playerData = await getPlayerData(issue.body);
     if (!playerData.player || !playerData.version) {
       throw new Error('player or version are missing');
