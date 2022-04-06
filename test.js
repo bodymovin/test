@@ -16,7 +16,8 @@ try {
   // console.log(core)
   const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
   const octokit = github.getOctokit(GITHUB_TOKEN);
-  console.log(github)
+  console.log(github.context.payload)
+  console.log(github.context.payload.issue)
   // console.log(github.event.issue)
   // console.log(github.event.issue.title)
   // console.log(github.event.issue.body)
