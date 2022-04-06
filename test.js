@@ -46,9 +46,10 @@ const getPlayerData = async(issueBody) => {
   return keys;
 }
 
-const getBranchName = async(playerData) => {
-  return 'new_test_branch_name'
-  // return `${playerData.player}__${playerData.version}`
+const setBranchName = async(playerData) => {
+  const branchName = 'new_test_branch_name';
+  // const branchName = `${playerData.player}__${playerData.version}`
+  core.setOutput("branch_name", branchName);
 }
 
 async function run() {
@@ -70,8 +71,8 @@ version:5.9.2`
     if (!playerData.player || !playerData.version) {
       throw new Error('player or version are missing');
     }
-    const branchName = await getBranchName(playerData);
-    core.setOutput("branch_name", branchName);
+    await setBranchName(playerData);
+    await updateFiles(playerData.player, playerData.version);
     console.log('RUN ENDED');
   } catch (error) {
     core.setFailed(error.message);
