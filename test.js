@@ -47,7 +47,8 @@ const getPlayerData = async(issueBody) => {
 }
 
 const getBranchName = async(playerData) => {
-  return `${playerData.player}__${playerData.version}`
+  return 'new_test_branch_name'
+  // return `${playerData.player}__${playerData.version}`
 }
 
 async function run() {
