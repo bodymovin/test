@@ -19,6 +19,7 @@ jobs:
     outputs:
       output1: ${{ steps.step1.outputs.test }}
       output2: ${{ steps.step2.outputs.test }}
+      output3: ${{ steps.execute.outputs.branch_name }}
       branch_name_job3:
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -35,6 +36,7 @@ jobs:
         id: node_step
         run: npm install
       - run: npm run execute
+        id: execute
       - id: step1
         run: echo "::set-output name=test::hello"
       - id: step2
@@ -45,7 +47,7 @@ jobs:
     needs: build
     steps:
       - run: echo 'test echo'
-      - run: echo ${{needs.build.outputs.output1}} ${{needs.build.outputs.output2}}
+      - run: echo ${{needs.build.outputs.output1}} ${{needs.build.outputs.output2}} ${{needs.build.outputs.output3}}
     # - uses: EndBug/add-and-commit@v9
     #   with:
     #     new_branch: ${{needs.build.outputs.branch_name_job}}
