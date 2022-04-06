@@ -16,6 +16,8 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    outputs:
+      branch_name_job: ${{ steps.node_step.outputs.branch_name }}
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
@@ -31,6 +33,7 @@ jobs:
         id: node_step
         run: npm install
       - run: npm run execute
-      - uses: EndBug/add-and-commit@v9
-        with:
-          new_branch: ${{steps.node_step.outputs.branch_name}}
+      - run: echo ${{needs.build.outputs.branch_name_job}}
+      # - uses: EndBug/add-and-commit@v9
+      #   with:
+      #     new_branch: ${{needs.build.outputs.branch_name_job}}

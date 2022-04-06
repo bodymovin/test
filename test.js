@@ -39,6 +39,7 @@ async function run() {
     console.log('TESTING 5')
     // console.log(core)
     core.setOutput("branch_name", "branch_from_output");
+    core.setOutput("branch_name_job", "branch_from_output_job");
     const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
     const octokit = github.getOctokit(GITHUB_TOKEN);
     // Issue title: github.event.issue.title
