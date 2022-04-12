@@ -45,7 +45,6 @@ jobs:
   build2:
     runs-on: ubuntu-latest
     steps:
-        working-directory: new_version
       - id: step1
         run: echo "hellooo"
       - id: step2
@@ -55,6 +54,7 @@ jobs:
       - id: step4
         run: echo "lowercase is ${{github.event.issue.title.lowercase}}"
       - name: Install dependencies
+        working-directory: new_version
         id: node_step
         run: npm install
       - run: npm run execute_ts
