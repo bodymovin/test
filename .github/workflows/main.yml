@@ -59,5 +59,5 @@ jobs:
         run: npm install
       - run: npm run execute_ts
         id: in_directory
-      - id: step4
+      - id: step5
         run: echo "lowercase is ${{steps.in_directory.outputs.the_value}}"
