@@ -44,8 +44,8 @@ jobs:
 
   build2:
     runs-on: ubuntu-latest
-    working-directory: new_version
     steps:
+      working-directory: new_version
       - id: step1
         run: echo "hellooo"
       - id: step2
