@@ -11,12 +11,12 @@ interface PlayerData {
 const editFile = async (filePath: string, player: string, version: string) => {
   const file = await readFile(filePath, 'utf-8');
   const fileData = JSON.parse(file);
-  if (!fileData.stats[player]) {
-    throw new Error('Player does not exist');
+  if (fileData.stats[player]) {
+    throw new Error('Player already exist');
   }
-  const playerStats = fileData.stats[player];
-  const objKeys = Object.keys(playerStats);
-  fileData.stats[player][version] = playerStats[objKeys[objKeys.length - 1]];
+  fileData.stats[player] = {
+    [version]: 'y',
+  }
   const updateFileString = JSON.stringify(fileData, null, 2);
   return writeFile(filePath, updateFileString);
 };
@@ -62,9 +62,6 @@ const setOutputs = async (playerData: PlayerData, issue_number: string) => {
 async function run() {
   try {
     const issue = github.context.payload.issue;
-    if (issue.title.toLowerCase() !== 'new version') {
-      throw new Error('not a versioning issue');
-    }
     const playerData = await getPlayerData(issue.body);
     if (!playerData.player || !playerData.version) {
       throw new Error('player or version are missing');
