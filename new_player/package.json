@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "execute": "node test.js",
-    "execute_ts": "node --require esbuild-register test.ts"
+    "build": "node --require esbuild-register test.ts"
   },
   "keywords": [],
   "author": "",
