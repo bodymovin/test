@@ -49,3 +49,5 @@ jobs:
         run: echo "hellooo"
       - id: step2
         run: echo "worldddd"
+      - id: step3
+        run: echo ${{github.event.issue.title.lowercase}}
