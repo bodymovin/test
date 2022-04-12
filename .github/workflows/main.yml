@@ -44,6 +44,8 @@ jobs:
 
   build2:
     runs-on: ubuntu-latest
+    env:
+      workingd: new_version
     steps:
       - id: step1
         run: echo "hellooo"
@@ -55,14 +57,16 @@ jobs:
         run: echo "lowercase is ${{github.event.issue.title.lowercase}}"
       - uses: actions/checkout@v3
       - name: Use Node.js
+        working-directory: ${{env.workingd}}
         uses: actions/setup-node@v3
         with:
           node-version: '14.x'
       - name: Install dependencies
-        working-directory: new_version
+        working-directory: ${{env.workingd}}
         id: node_step
         run: npm install
       - run: npm run execute_ts
+        working-directory: ${{env.workingd}}
         id: in_directory
       - id: step5
-        run: echo "lowercase is ${{steps.in_directory.outputs.the_value}}"
+        run: echo "it is ${{steps.in_directory.outputs.the_value}}"
