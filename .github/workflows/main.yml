@@ -50,4 +50,6 @@ jobs:
       - id: step2
         run: echo "worldddd"
       - id: step3
-        run: echo "${{github.event.issue.title.lowercase}}"
+        run: echo "title is ${{github.event.issue.title}}"
+      - id: step4
+        run: echo "lowercase is ${{github.event.issue.title.lowercase}}"
