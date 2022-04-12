@@ -16,6 +16,7 @@ jobs:
       branch_name: ${{ steps.execute.outputs.branch_name }}
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      workingd: new_version
     steps:
       # - uses: peterjgrainger/action-create-branch@v2.0.1
       #   with:
@@ -26,9 +27,11 @@ jobs:
         with:
           node-version: '14.x'
       - name: Install dependencies
+        working-directory: ${{env.workingd}}
         id: node_step
         run: npm install
       - run: npm run execute_ts
+        working-directory: ${{env.workingd}}
         id: execute
       # - uses: EndBug/add-and-commit@v9
       #   with:
@@ -42,19 +45,19 @@ jobs:
           branch: ${{steps.execute.outputs.branch_name}}
           title: "Closes #${{steps.execute.outputs.issue_number}} , Adds version ${{steps.execute.outputs.version}} for player ${{steps.execute.outputs.player}}" 
 
-  build2:
+
+  new_player:
+    if: github.event.issue.title == 'new player'
     runs-on: ubuntu-latest
+    outputs:
+      branch_name: ${{ steps.execute.outputs.branch_name }}
     env:
-      workingd: new_version
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      workingd: new_player
     steps:
-      - id: step1
-        run: echo "hellooo"
-      - id: step2
-        run: echo "worldddd"
-      - id: step3
-        run: echo "title is ${{github.event.issue.title}}"
-      - id: step4
-        run: echo "lowercase is ${{github.event.issue.title.lowercase}}"
+      # - uses: peterjgrainger/action-create-branch@v2.0.1
+      #   with:
+      #     branch: 'release-notes'
       - uses: actions/checkout@v3
       - name: Use Node.js
         uses: actions/setup-node@v3
@@ -66,6 +69,15 @@ jobs:
         run: npm install
       - run: npm run execute_ts
         working-directory: ${{env.workingd}}
-        id: in_directory
-      - id: step5
-        run: echo "it is ${{steps.in_directory.outputs.the_value}}"
+        id: execute
+      # - uses: EndBug/add-and-commit@v9
+      #   with:
+      #     new_branch: ${{steps.execute.outputs.branch_name}}
+      - name: cancelling
+        if: ${{steps.execute.outputs.cancelled == 'true'}}
+        uses: andymckay/cancel-action@0.2
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4
+        with:
+          branch: ${{steps.execute.outputs.branch_name}}
+          title: "Closes #${{steps.execute.outputs.issue_number}} , Adds version ${{steps.execute.outputs.version}} for player ${{steps.execute.outputs.player}}" 
