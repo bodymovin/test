@@ -1,16 +1,16 @@
 # This workflow will do a clean install of node dependencies, cache/restore them, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: Node.js CI
+name: Version updater
 
 on:
   issues:
-    types: [opened, edited]
+    types: [opened]
 
 jobs:
 
-  build:
-    if: github.event.issue.title == 'new issue'
+  new_version:
+    if: github.event.issue.title == 'New Version'
     runs-on: ubuntu-latest
     outputs:
       branch_name: ${{ steps.execute.outputs.branch_name }}
@@ -18,9 +18,6 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       workingd: new_version
     steps:
-      # - uses: peterjgrainger/action-create-branch@v2.0.1
-      #   with:
-      #     branch: 'release-notes'
       - uses: actions/checkout@v3
       - name: Use Node.js
         uses: actions/setup-node@v3
@@ -30,49 +27,9 @@ jobs:
         working-directory: ${{env.workingd}}
         id: node_step
         run: npm install
-      - run: npm run execute_ts
+      - run: npm run build_version
         working-directory: ${{env.workingd}}
         id: execute
-      # - uses: EndBug/add-and-commit@v9
-      #   with:
-      #     new_branch: ${{steps.execute.outputs.branch_name}}
-      - name: cancelling
-        if: ${{steps.execute.outputs.cancelled == 'true'}}
-        uses: andymckay/cancel-action@0.2
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v4
-        with:
-          branch: ${{steps.execute.outputs.branch_name}}
-          title: "Closes #${{steps.execute.outputs.issue_number}} , Adds version ${{steps.execute.outputs.version}} for player ${{steps.execute.outputs.player}}" 
-
-
-  new_player:
-    if: github.event.issue.title == 'new player'
-    runs-on: ubuntu-latest
-    outputs:
-      branch_name: ${{ steps.execute.outputs.branch_name }}
-    env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      workingd: new_player
-    steps:
-      # - uses: peterjgrainger/action-create-branch@v2.0.1
-      #   with:
-      #     branch: 'release-notes'
-      - uses: actions/checkout@v3
-      - name: Use Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '14.x'
-      - name: Install dependencies
-        working-directory: ${{env.workingd}}
-        id: node_step
-        run: npm install
-      - run: npm run execute_ts
-        working-directory: ${{env.workingd}}
-        id: execute
-      # - uses: EndBug/add-and-commit@v9
-      #   with:
-      #     new_branch: ${{steps.execute.outputs.branch_name}}
       - name: cancelling
         if: ${{steps.execute.outputs.cancelled == 'true'}}
         uses: andymckay/cancel-action@0.2
