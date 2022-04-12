@@ -53,6 +53,11 @@ jobs:
         run: echo "title is ${{github.event.issue.title}}"
       - id: step4
         run: echo "lowercase is ${{github.event.issue.title.lowercase}}"
+      - uses: actions/checkout@v3
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14.x'
       - name: Install dependencies
         working-directory: new_version
         id: node_step
