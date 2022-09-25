@@ -6,6 +6,7 @@ name: Version updater
 on:
   issues:
     types: [opened]
+  repository_dispatch
 
 jobs:
 
