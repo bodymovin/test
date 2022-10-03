@@ -4,9 +4,9 @@
 name: Version updater
 
 on:
-  issues:
+  - issues:
     types: [opened]
-  repository_dispatch
+  - repository_dispatch
 
 jobs:
 
