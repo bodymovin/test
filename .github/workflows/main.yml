@@ -12,6 +12,6 @@ on:
 jobs:
   log:
     runs-on: ubuntu-latest
-      steps:
-        run: |
-          echo 'test'
+    steps:
+      - run: |
+        echo 'test'
