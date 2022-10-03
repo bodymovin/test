@@ -4,6 +4,7 @@
 name: Version updater
 
 on:
+  push:
   issues:
     types: [opened]
   repository_dispatch:
