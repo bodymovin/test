@@ -7,6 +7,7 @@ async function run() {
     // const token = 'a';
     const secretToken = process.env.GITHUB_TOKEN || 'none secret';
     console.log('secretToken', secretToken.length);
+    console.log('typeof github', typeof github);
     const octokit = github.getOctokit(secretToken);
     console.log(typeof octokit);
     const result = await octokit.rest.repos.createDispatchEvent({
@@ -15,7 +16,7 @@ async function run() {
       event_type: 'trigger-test',
       client_payload: {},
     });
-    console.log('result', result)
+    console.log('result', result);
   } catch (error) {
     console.log('RUN ERROR: ', error);
   }
