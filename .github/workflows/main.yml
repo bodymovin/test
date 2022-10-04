@@ -8,6 +8,7 @@ on:
     types: [opened]
 
 jobs:
+
   dispatch_test:
     if: github.event.issue.title == 'Dispatch Test'
     runs-on: ubuntu-latest
