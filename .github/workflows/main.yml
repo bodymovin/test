@@ -25,7 +25,7 @@ jobs:
         working-directory: ${{env.workingd}}
         id: node_step
         run: npm install
-      - run: npm run run_tests
+      - run: node --require esbuild-register run.ts
 
   new_version:
     if: github.event.issue.title == 'New Version'
