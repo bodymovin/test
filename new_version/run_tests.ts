@@ -8,6 +8,8 @@ async function run() {
     console.log('playerplayer', player);
     console.log('=== process.env ===');
     console.log(process.env);
+    console.log('=== process.arg ===');
+    console.log(process.argv);
     // const token = 'a';
     const secretToken = process.env.GITHUB_TOKEN || 'none secret';
     console.log('secretToken', secretToken.length);
