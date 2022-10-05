@@ -14,6 +14,7 @@ async function run() {
     console.log('Running test');
     const argv = yargs(process.argv).argv;
     const secretToken = process.env.BODYMOVIN_PERSONAL_TOKEN || 'none secret';
+    console.log('secretToken', secretToken.length);
     const octokit = github.getOctokit(secretToken);
     const payload = getPayload(argv.player);
     if (payload) {
