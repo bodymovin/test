@@ -6,6 +6,8 @@ async function run() {
     console.log('Running test');
     const player = core.getInput('player');
     console.log('playerplayer', player);
+    console.log('=== process.env ===');
+    console.log(process.env);
     // const token = 'a';
     const secretToken = process.env.GITHUB_TOKEN || 'none secret';
     console.log('secretToken', secretToken.length);
