@@ -1,22 +1,24 @@
 {
-  "name": "test",
+  "name": "lottie-new-version-github-action",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "source": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "execute": "node test.js",
-    "build_version": "node --require esbuild-register test.ts"
+    "build_version": "node --require esbuild-register build_version.ts"
   },
-  "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "Apache 2.0",
   "dependencies": {
     "@actions/core": "^1.6.0",
-    "@actions/github": "^5.0.0"
+    "@actions/github": "^5.0.0",
+    "marked": "^4.0.12"
   },
   "devDependencies": {
     "esbuild": "^0.14.32",
-    "esbuild-register": "^3.3.2"
+    "esbuild-register": "^3.3.2",
+    "eslint": "^8.10.0",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.2"
   }
 }
