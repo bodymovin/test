@@ -60,8 +60,6 @@ jobs:
       - name: Run Tests
         run: npm run run_tests
         working-directory: ${{env.workingd}}
-        with:
-          player: ${{steps.execute.outputs.player}}
 
   new_player:
       if: github.event.issue.title == 'New Player'
