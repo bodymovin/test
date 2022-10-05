@@ -16,6 +16,7 @@ jobs:
       branch_name: ${{ steps.execute.outputs.branch_name }}
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      BODYMOVIN_PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       workingd: new_version
     steps:
       - uses: actions/checkout@v3
